@@ -1,21 +1,21 @@
 const webpack = require('webpack'),
   path = require('path'),
   ExtractTextPlugin = require('extract-text-webpack-plugin'),
-  HTMLWebpackPlugin = require('html-webpack-plugin'),
   StyleLintPlugin = require('stylelint-webpack-plugin'),
+  BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
   SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 const config = {
   context: __dirname,
-  entry: './src/index.js',
-  devtool: 'source-map',
+  entry: './blocks/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   resolve: {
-    extensions: ['.js', '.hbs', '.jsx', '.scss', '.json']
+    extensions: ['.js', '.jsx', '.scss', '.json']
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -26,7 +26,7 @@ const config = {
             {
               loader: 'css-loader',
               options: {
-                minimize: process.env.NODE_ENV === 'production' ? true : false,
+                importLoaders: 1,
                 sourceMap: true
               }
             },
@@ -38,13 +38,13 @@ const config = {
                   require('autoprefixer')({ browsers: 'last 2 versions' }),
                   require('css-mqpacker')({ sort: true })
                 ],
-                sourceMap: true
+                sourceMap: 'inline'
               }
             },
             {
               loader: 'sass-loader',
               options: {
-                includePaths: ['node_modules/aurora-utilities/sass', 'node_modules/sanitize.scss'],
+                includePaths: ['node_modules/sanitize.scss', 'node_modules/aurora-utilities/sass'],
                 sourceMap: true
               }
             }
@@ -53,7 +53,11 @@ const config = {
       },
       {
         test: /\.svg$/,
-        use: ['svg-sprite-loader', 'svgo-loader']
+        loader: 'svg-sprite-loader',
+        options: {
+          extract: true,
+          spriteFilename: 'svg-defs.svg'
+        }
       },
       {
         test: /\.(jpe?g|png|gif)$/,
@@ -70,8 +74,9 @@ const config = {
       },
       {
         enforce: 'pre',
-        test: /\.jsx?$/,
-        loader: 'eslint-loader'
+        test: /\.jsx$/,
+        loader: 'eslint-loader',
+        exclude: [/node_modules/, /vendor/]
       },
       {
         test: /\.jsx?$/,
@@ -79,25 +84,33 @@ const config = {
       }
     ]
   },
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 9000
-  },
   plugins: [
-    new HTMLWebpackPlugin({
-      template: path.join('./src', 'index.html'),
-      filename: process.env.NODE_ENV === 'production' ? '../index.html' : 'index.html'
-    }),
     new StyleLintPlugin(),
     new ExtractTextPlugin('main.css'),
-    new SpriteLoaderPlugin()
+    new SpriteLoaderPlugin(),
+    new BrowserSyncPlugin({
+      files: '**/*.php',
+      injectChanges: true,
+      proxy: 'http://fordeapp.test'
+    })
+    // new webpack.ProvidePlugin({})
   ]
 };
 
-if (process.env.NODE_ENV === 'production') {
+if ('production' === process.env.NODE_ENV) {
   config.devtool = false;
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    })
+  );
+  config.plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        comparisons: false
+      }
+    })
+  );
 }
 
 module.exports = config;

@@ -72,5 +72,8 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:update": "jest -u"
+  },
+  "dependencies": {
+    "react": "^16.4.0"
   }
 }

@@ -49,6 +49,7 @@ class CFA_Project_Tags extends Taxonomy_Core {
 			// Register taxonomy arguments.
 			array(
 				'hierarchical' => false,
+				'show_in_rest' => true,
 			),
 			// Post types to attach to.
 			array(

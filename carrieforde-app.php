@@ -37,6 +37,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+// define( 'CARRIEFORDE_APP_PATH', plugin_dir_path( __FILE__ ) );
 
 /**
  * Autoloads files with classes when needed.
@@ -131,6 +132,14 @@ final class Carrie_Forde_App {
 	protected $project_tags;
 
 	/**
+	 * Instance of CFA_Blocks
+	 *
+	 * @since1.0.0
+	 * @var CFA_Blocks
+	 */
+	protected $blocks;
+
+	/**
 	 * Creates or returns an instance of this class.
 	 *
 	 * @since   1.0.0
@@ -164,6 +173,7 @@ final class Carrie_Forde_App {
 
 		$this->portfolio = new CFA_Portfolio( $this );
 		$this->project_tags = new CFA_Project_Tags( $this );
+		$this->blocks = new CFA_Blocks( $this );
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
@@ -321,6 +331,7 @@ final class Carrie_Forde_App {
 			case 'path':
 			case 'portfolio':
 			case 'project_tags':
+			case 'blocks':
 				return $this->$field;
 			default:
 				throw new Exception( 'Invalid ' . __CLASS__ . ' property: ' . $field );

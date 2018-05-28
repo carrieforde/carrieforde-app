@@ -59,6 +59,7 @@ class CFA_Portfolio extends CPT_Core {
 				'public'       => true,
 				'show_in_rest' => true,
 				'rest_base'    => 'portfolio',
+				'taxonomies'   => array( 'cfa-project-tag' ),
 			)
 		);
 	}
