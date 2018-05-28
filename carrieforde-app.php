@@ -140,6 +140,14 @@ final class Carrie_Forde_App {
 	protected $blocks;
 
 	/**
+	 * Instance of CFA_Page_Settings
+	 *
+	 * @since1.0.0
+	 * @var CFA_Page_Settings
+	 */
+	protected $page_settings;
+
+	/**
 	 * Creates or returns an instance of this class.
 	 *
 	 * @since   1.0.0
@@ -174,6 +182,7 @@ final class Carrie_Forde_App {
 		$this->portfolio = new CFA_Portfolio( $this );
 		$this->project_tags = new CFA_Project_Tags( $this );
 		$this->blocks = new CFA_Blocks( $this );
+		$this->page_settings = new CFA_Page_Settings( $this );
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
@@ -332,6 +341,7 @@ final class Carrie_Forde_App {
 			case 'portfolio':
 			case 'project_tags':
 			case 'blocks':
+			case 'page_settings':
 				return $this->$field;
 			default:
 				throw new Exception( 'Invalid ' . __CLASS__ . ' property: ' . $field );
