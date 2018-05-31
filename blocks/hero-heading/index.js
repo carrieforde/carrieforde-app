@@ -1,4 +1,5 @@
 import SectionWrapper from '../../components/SectionWrapper';
+import SectionHeader from '../../components/SectionHeader';
 
 const { registerBlockType } = wp.blocks,
   { PlainText, RichText } = wp.editor,
@@ -60,15 +61,8 @@ registerBlockType('carrieforde-app/hero-heading', {
     const { attributes } = props;
     return (
       <SectionWrapper className={`cfa-block--hero-heading full-width`} wrapper>
-        <header className="cfa-block__header">
-          <h2 className="cfa-block__title" value={attributes.title}>
-            {attributes.title}
-          </h2>
-        </header>
-
-        <div className="cfa-block__content" value={attributes.content}>
-          {attributes.content}
-        </div>
+        <SectionHeader title={attributes.title} />
+        <div className="cfa-block__content">{attributes.content}</div>
       </SectionWrapper>
     );
   }

@@ -1,5 +1,6 @@
 // @flow
 import SectionWrapper from '../../components/SectionWrapper';
+import SectionHeader from '../../components/SectionHeader';
 import List from '../../components/List';
 
 const { registerBlockType } = wp.blocks,
@@ -15,12 +16,18 @@ registerBlockType('carrieforde-app/grid-list', {
     html: false
   },
   attributes: {
+    title: {
+      type: 'string',
+      source: 'text',
+      selector: '.cfa-block__title'
+    },
     items: {
+      type: 'array',
       source: 'query',
-      selector: '.grid-list',
+      selector: '.grid-list__item',
       query: {
-        title: { source: 'text', selector: '.grid-item__title' },
-        content: { source: 'children', selector: '.grid-item__content' }
+        title: { source: 'text', selector: '.grid-list__title' },
+        content: { source: 'children', selector: '.grid-list__content' }
       }
     }
   },
@@ -34,7 +41,19 @@ registerBlockType('carrieforde-app/grid-list', {
    * @return {Element}       Element to render.
    */
   edit: (props: Object) => {
-    return <List {...props} />;
+    const { attributes, setAttributes } = props;
+    return (
+      <SectionWrapper>
+        <h2>
+          <PlainText
+            placeholder="Section Title"
+            value={attributes.title}
+            onChange={message => setAttributes({ title: message })}
+          />
+        </h2>
+        <List {...props} />
+      </SectionWrapper>
+    );
   },
 
   /**
@@ -54,14 +73,19 @@ registerBlockType('carrieforde-app/grid-list', {
         <ol className="grid-list">
           {attributes.items.map((item, index) => (
             <li key={index} className="grid-list__item">
-              <h3 className="grid-item__title">{item.title}</h3>
-              <div className="grid-item__content">{item.content}</div>
+              <h3 className="grid-list__title">{item.title}</h3>
+              <div className="grid-list__content">{item.content}</div>
             </li>
           ))}
         </ol>
       );
     }
 
-    return <SectionWrapper className={`cfa-block--grid-list`}>{list}</SectionWrapper>;
+    return (
+      <SectionWrapper className={`cfa-block--grid-list`}>
+        <SectionHeader title={attributes.title} />
+        {list}
+      </SectionWrapper>
+    );
   }
 });
