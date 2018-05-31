@@ -1,2 +1,2 @@
-// import './projects/block';
 import './hero-heading/index';
+import './grid-list/index';
