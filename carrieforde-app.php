@@ -132,14 +132,6 @@ final class Carrie_Forde_App {
 	protected $project_tags;
 
 	/**
-	 * Instance of CFA_Page_Settings
-	 *
-	 * @since1.0.0
-	 * @var CFA_Page_Settings
-	 */
-	protected $page_settings;
-
-	/**
 	 * Instance of CFA_Project_Category
 	 *
 	 * @since1.0.0
@@ -181,7 +173,6 @@ final class Carrie_Forde_App {
 
 		$this->portfolio = new CFA_Portfolio( $this );
 		$this->project_tags = new CFA_Project_Tags( $this );
-		$this->page_settings = new CFA_Page_Settings( $this );
 		$this->project_category = new CFA_Project_Category( $this );
 	} // END OF PLUGIN CLASSES FUNCTION
 
@@ -363,7 +354,6 @@ final class Carrie_Forde_App {
 			case 'path':
 			case 'portfolio':
 			case 'project_tags':
-			case 'page_settings':
 			case 'project_category':
 				return $this->$field;
 			default:
