@@ -7,7 +7,6 @@
  */
 
 require_once dirname( __FILE__ ) . '/../vendor/cpt-core/CPT_Core.php';
-require_once dirname( __FILE__ ) . '/../vendor/cmb2/init.php';
 
 /**
  * Carrie Forde App Portfolio post type class.
@@ -70,38 +69,7 @@ class CFA_Portfolio extends CPT_Core {
 	 * @since  1.0.0
 	 */
 	public function hooks() {
-		add_action( 'cmb2_init', array( $this, 'fields' ) );
-		add_action( 'rest_api_init', array( $this, 'add_meta_to_rest' ) );
-	}
-
-	/**
-	 * Add custom fields to the CPT.
-	 *
-	 * @since  1.0.0
-	 */
-	public function fields() {
-
-		// Set our prefix.
-		$prefix = 'cfa_portfolio_';
-
-		// Define our metaboxes and fields.
-		$cmb = new_cmb2_box( array(
-			'id'           => $prefix . 'metabox',
-			'title'        => esc_html__( 'Carrie Forde App Portfolio Meta Box', 'carrieforde-app' ),
-			'object_types' => array( 'cfa-portfolio' ),
-		) );
-
-		$cmb->add_field( array(
-			'name' => esc_html__( 'Github URL', 'carrieforde-app' ),
-			'id'   => 'cfa_portfolio_githuburl',
-			'type' => 'text_url',
-		) );
-
-		$cmb->add_field( array(
-			'name' => esc_html__( 'Site URL', 'carrieforde-app' ),
-			'id'   => 'cfa_portfolio_siteurl',
-			'type' => 'text_url',
-		) );
+		// add_action( 'rest_api_init', array( $this, 'add_meta_to_rest' ) );
 	}
 
 	/**
