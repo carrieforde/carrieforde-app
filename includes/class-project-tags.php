@@ -48,8 +48,10 @@ class CFA_Project_Tags extends Taxonomy_Core {
 			),
 			// Register taxonomy arguments.
 			array(
+				'rewrite'      => array( 'slug' => 'project-tag' ),
 				'hierarchical' => false,
 				'show_in_rest' => true,
+				'rest_base'    => 'project-tag',
 			),
 			// Post types to attach to.
 			array(
