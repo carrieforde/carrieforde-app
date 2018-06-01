@@ -1,0 +1,104 @@
+{
+    "key": "group_5b10a4b18774e",
+    "title": "Grid List",
+    "fields": [
+        {
+            "key": "field_5b10a7800c8c6",
+            "label": "Section Title",
+            "name": "section_title",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "field_5b10a5be7e5e0"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_5b10a5338ea89",
+            "label": "List Items",
+            "name": "list_items",
+            "type": "repeater",
+            "instructions": "Add up to six items, which will display as a grid on the front page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5b10a55b8ea8a",
+            "min": 0,
+            "max": 6,
+            "layout": "block",
+            "button_label": "Add Item",
+            "sub_fields": [
+                {
+                    "key": "field_5b10a55b8ea8a",
+                    "label": "Item Title",
+                    "name": "item_title",
+                    "type": "text",
+                    "instructions": "Add a title for the item.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "JavaScript",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5b10a57d8ea8b",
+                    "label": "Item Description",
+                    "name": "item_description",
+                    "type": "wysiwyg",
+                    "instructions": "Add a description of the item.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1527819598
+}

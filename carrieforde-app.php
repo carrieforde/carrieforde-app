@@ -196,6 +196,8 @@ final class Carrie_Forde_App {
 	 */
 	public function hooks() {
 		add_action( 'init', array( $this, 'init' ), 0 );
+		add_action( 'acf/settings/save_json', array( $this, 'acf_json_save_point' ) );
+		add_action( 'acf/settings/load_json', array( $this, 'acf_json_load_point' ) );
 	}
 
 	/**
@@ -240,6 +242,27 @@ final class Carrie_Forde_App {
 
 		// Initialize plugin classes.
 		$this->plugin_classes();
+	}
+
+	/**
+	 * Tell ACF that our acf-json save point is in the plugin.
+	 *
+	 * @param string $path The location of the acf-json directory.
+	 */
+	public function acf_json_save_point( $path ) {
+		// Point the ACF JSON folder to the plugin.
+		$path = $this->path . 'acf-json';
+		return $path;
+	}
+	/**
+	 * Tell ACF where our acf-json stuff is saved.
+	 *
+	 * @param string $paths The location of the acf-json directory.
+	 */
+	public function acf_json_load_point( $paths ) {
+		// Append path (allows loading of anything in the theme).
+		$paths[] = $this->path . 'acf-json';
+		return $paths;
 	}
 
 	/**

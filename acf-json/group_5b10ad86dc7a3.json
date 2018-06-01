@@ -1,0 +1,47 @@
+{
+    "key": "group_5b10ad86dc7a3",
+    "title": "Page Settings",
+    "fields": [
+        {
+            "key": "field_5b10ad8bf4f60",
+            "label": "Hide Title",
+            "name": "hide_title",
+            "type": "checkbox",
+            "instructions": "Select this box if you would like to hide the page title from view (it's only visually hidden, and will not negatively affect SEO).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "yes": "Yes"
+            },
+            "allow_custom": 0,
+            "save_custom": 0,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1527819738
+}
