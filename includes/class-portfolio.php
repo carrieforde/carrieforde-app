@@ -69,7 +69,7 @@ class CFA_Portfolio extends CPT_Core {
 	 * @since  1.0.0
 	 */
 	public function hooks() {
-		// add_action( 'rest_api_init', array( $this, 'add_meta_to_rest' ) );
+		add_action( 'rest_api_init', array( $this, 'add_meta_to_rest' ) );
 	}
 
 	/**
@@ -82,8 +82,12 @@ class CFA_Portfolio extends CPT_Core {
 		$post_id = get_the_ID();
 
 		return array(
-			'github_url' => get_post_meta( $post_id, 'cfa_portfolio_githuburl', true ),
-			'site_url'   => get_post_meta( $post_id, 'cfa_portfolio_siteurl', true ),
+			'github_url' => get_post_meta( $post_id, 'github_url', true ),
+			'live_url'   => get_post_meta( $post_id, 'live_url', true ),
+			'other_url'  => array(
+				'name' => get_post_meta( $post_id, 'other_url_url_label', true ),
+				'url'  => get_post_meta( $post_id, 'other_url_url', true ),
+			),
 		);
 	}
 
