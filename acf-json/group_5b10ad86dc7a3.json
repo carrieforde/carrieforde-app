@@ -24,6 +24,52 @@
             "layout": "vertical",
             "toggle": 0,
             "return_format": "value"
+        },
+        {
+            "key": "field_5b5412cab2128",
+            "label": "Transparent Header",
+            "name": "transparent_header",
+            "type": "checkbox",
+            "instructions": "Should the site header background be transparent so that the first content element appears behind the header?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "yes": "Yes"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "horizontal",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_5b541304b2129",
+            "label": "Alternate Logo",
+            "name": "alternate_logo",
+            "type": "checkbox",
+            "instructions": "Use the alternate logo?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "yes": "Yes"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "horizontal",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
         }
     ],
     "location": [
@@ -43,5 +89,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1527819738
+    "modified": 1532236583
 }
